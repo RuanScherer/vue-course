@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>v-once</title>
+</head>
+<body>
+	<div id="app">
+		<!-- Remove the reactivity -->
+		<h1 v-once>{{ message }}</h1>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				message: "Hello, Dev"
+			}
+		})
+	</script>
+</body>
+</html>
