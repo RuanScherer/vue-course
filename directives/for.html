@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>v-for</title>
+</head>
+<body>
+	<div id="app">
+		<h2>Cidades</h2>
+		<ol>
+			<li v-for="city in cities">{{ city }}</li>
+		</ol>
+		<h2>Países</h2>
+		<ol>
+			<li v-for="country in countries">{{ country.name }} | {{ country.coin }}</li>
+		</ol>
+		<h2>Grandes filmes</h2>
+		<ul>
+			<li v-for="(movie, index) in movies">{{ index }}. {{ movie }}</li>
+		</ul>
+		<h2>Empresas</h2>
+		<p v-for="(data, key, index) in company">{{ index }}. {{key}}: {{ data }}</p>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				cities: [
+					'New York', 
+					'São Paulo', 
+					'Londres', 
+					'Rio de Janeiro'
+				],
+				countries: [
+					{
+						name: "Brasil",
+						coin: "Real"
+					},
+					{
+						name: "EUA",
+						coin: "Dolar"
+					}
+				],
+				movies: [
+					"Star Wars", 
+					"Jurassic Park", 
+					"De volta para o futuro"
+				],
+				company: {
+					name: "Facebook",
+					year: 2004,
+					founder: "Mark"
+				}
+			}
+		})
+	</script>
+</body>
+</html>
