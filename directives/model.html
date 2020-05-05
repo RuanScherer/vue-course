@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>v-model</title>
+</head>
+<body>
+	<div id="app">
+		<p :style="{ fontSize: textSize + 'px' }">
+			V-model can be used in input, select, textarea and components
+		</p>
+		<input 
+			type="text" 
+			v-model="textSize" 
+			placeholder="Digite o tamanho do texto em pixels">
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				textSize: 30
+			}
+		})
+	</script>
+</body>
+</html>
