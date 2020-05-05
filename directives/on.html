@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>v-on</title>
+</head>
+<body>
+	<div id="app">
+		<h1 @click="reverseMessage()">{{ message }}</h1>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				message: "Vue.js é incrível!"
+			},
+			methods: {
+				reverseMessage() {
+					this.message = this.message.split('').reverse().join('')
+				}
+			}
+		})
+	</script>
+</body>
+</html>
