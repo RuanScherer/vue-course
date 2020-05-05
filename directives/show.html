@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>v-show</title>
+</head>
+<body>
+	<div id="app">
+		<h1 v-show="logged">Seja bem-vindo</h1>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				logged: true
+			}
+		})
+	</script>
+</body>
+</html>
