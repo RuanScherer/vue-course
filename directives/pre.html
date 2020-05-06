@@ -7,6 +7,8 @@
 	<div id="app">
 		<!-- This directive remove vue from this element -->
 		<h2 v-pre>{{ name }}</h2>
+
+		<p @click="alert('Hello, World')" v-pre>Este é um exemplo de v-pre</p>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
