@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>v-on dynamic</title>
+</head>
+<body>
+	<div id="app">
+		<input 
+			type="text" 
+			placeholder="Filtrar pessoas"
+			v-on:keyup="filterPersons($event)">
+		<ul>
+			<li v-for="person in filteredPersons">{{ person }}</li>
+		</ul>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				message: "Vue.js é incrível!",
+				persons: [
+					"Ruan Vitor Scherer",
+					"Evan You",
+					"Bill Gates",
+					"Steve Jobs"
+				],
+				filteredPersons: []
+			},
+			methods: {
+				filterPersons(event) {
+					this.filteredPersons = this.persons.filter( name => {
+						return name.toUpperCase().includes(event.target.value.toUpperCase())
+					} )
+				}
+			},
+			created() {
+				this.filteredPersons = this.persons
+			}
+		})
+	</script>
+</body>
+</html>
