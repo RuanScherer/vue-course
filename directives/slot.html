@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>v-slot</title>
+</head>
+<body>
+	<div id="app">
+		<text-component>
+			<template v-slot:header>
+				Este é um exemplo de v-slot
+			</template>
+			<template #content>
+				Outro exemplo de v-slot
+			</template>
+		</text-component>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		Vue.component("text-component", {
+			template: `
+				<div>
+					<header>
+						<slot name="header"></slot>
+					</header>
+					<p>
+						<slot name="content"></slot>
+					</p>
+				</div>
+			`
+		})
+		let app = new Vue({
+			el: "#app"
+		})
+	</script>
+</body>
+</html>
