@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Custom directives 1</title>
+</head>
+<body>
+	<div id="app">
+		<h2 v-upper>Exemplo de diretiva personalizada</h2>
+		<h2 v-capitalize>hello world</h2>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		Vue.directive('upper', {
+			inserted(element) {
+				element.innerText = element.innerText.toUpperCase()
+			}
+		})
+
+		let app = new Vue({
+			el: "#app",
+			directives: {
+				capitalize: element => {
+					let words = element.innerText.split(" ")
+					words.forEach( (text, index) => {
+						words[index] = text.charAt(0).toUpperCase() + text.slice(1)
+					})
+					element.innerText = words.join(" ")
+				}
+			}
+		})
+	</script>
+</body>
+</html>

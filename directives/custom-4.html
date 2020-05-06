@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Custom directives 4</title>
+</head>
+<body>
+	<div id="app">
+		<h2 v-upper>{{ name }}</h2>
+		<h2 v-capitalize>hello world {{ name }}</h2>
+		<h2 v-custom:[arg]="distance">{{ name }}</h2>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		Vue.directive('upper', {
+			inserted(element) {
+				element.innerText = element.innerText.toUpperCase()
+			}
+		})
+
+		function setDirection(element, binding) {
+			element.style.margin = 0;
+			let direction = binding.arg.toLowerCase()
+			let value = binding.value
+			switch(direction) {
+				case 'left':
+				case 'right':
+				case 'top':
+				case 'bottom':
+					let newDirection = direction.charAt(0).toUpperCase() + direction.slice(1)
+					eval(`element.style.margin${newDirection} = value + 'px'`)
+					break;
+				default:
+					console.error("Informe uma opção válida")
+			}
+		}
+
+		let app = new Vue({
+			el: "#app",
+			data: {
+				name: "Ruan",
+				arg: "left",
+				distance: 150
+			},
+			directives: {
+				capitalize: {
+					bind(element) {
+						console.log("BIND - Fui vinculada a um elemento")
+					},
+					inserted(element) {
+						console.log("INSERTED - Fui inserido no DOM")
+						let words = element.innerText.split(" ")
+						words.forEach( (text, index) => {
+							words[index] = text.charAt(0).toUpperCase() + text.slice(1)
+						})
+						element.innerText = words.join(" ")
+					},
+					update(element) {
+						console.log("UPDATE - Fui atualizada")
+					},
+					unbind(element) {
+						console.log("UNBIND - Fui desvinculada de um elemento")
+					},
+					componentUpdated(element) {
+						console.log("COMPONENT - O componente foi atualizado")
+					}
+				},
+				custom: {
+					inserted(element, binding, vnode) {
+						setDirection(element, binding)
+						element.style.color = 'red'
+					},
+					update(element, binding, vnode, oldvnode) {
+						setDirection(element, binding)
+						element.style.textDecoration = 'underline'
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>
