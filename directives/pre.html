@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>v-pre</title>
+</head>
+<body>
+	<div id="app">
+		<!-- This directive remove vue from this element -->
+		<h2 v-pre>{{ name }}</h2>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app"
+		})
+	</script>
+</body>
+</html>
