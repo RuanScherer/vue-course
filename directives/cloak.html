@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>v-cloak</title>
+	<style type="text/css">
+		[v-cloak] {
+			display: none
+		}
+	</style>
+</head>
+<body>
+	<div id="app" v-cloak>
+		<h2>{{ name }}</h2>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				name: "Ruan Vitor Scherer"
+			}
+		})
+	</script>
+</body>
+</html>
