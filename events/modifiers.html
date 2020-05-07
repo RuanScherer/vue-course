@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Event Modifiers</title>
+	<link 
+		rel="stylesheet" 
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+		crossorigin="anonymous">
+</head>
+<body>
+	<div id="app">
+		<form class="form p-4">
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label for="name">Nome</label>
+						<input 
+							type="text"
+							class="form-control"
+							placeholder="Seu nome"
+							name="username"
+							id="name">
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input 
+							type="text"
+							class="form-control"
+							placeholder="Seu email"
+							name="email"
+							id="email">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="message">Mensagem</label>
+				<textarea
+					class="form-control"
+					name="message"
+					id="message"
+					cols="30"
+					rows="10">
+				</textarea>
+			</div>
+			<button
+				type="submit"
+				class="btn btn-primary"
+				@click.prevent="send($event)">
+				Enviar
+			</button>
+		</form>
+
+		<hr>
+
+		<a 
+			href="htps://www.youtube.com/hcodebrasil"
+			@click.prevent.once="alert('Olá')"
+			class="btn btn-primary m-4">
+			Youtube Hcode
+		</a>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			methods: {
+				send(event) {
+					let form = event.target.form
+					let data = new FormData(form)
+					for(let value of data.entries()) {
+						console.log(`${value[0]} : ${value[1]}`)
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>
