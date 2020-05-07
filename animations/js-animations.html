@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>JS Animations</title>
+	<link 
+		rel="stylesheet" 
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+		crossorigin="anonymous">
+		<style type="text/css">
+			.animation-first-enter-active {
+				animation: fade 0.8s;
+			}
+			.animation-first-leave-active {
+				animation: fade 0.8s reverse;
+			}
+			@keyframes fade {
+				from {
+					background-color: #fff 
+				}
+				to {
+					background-color: #999
+				}
+			}
+		</style>
+</head>
+<body>
+	<div id="app">
+		<transition 
+			name="animation-first"
+			@before-enter="beforeEnter"
+			@enter="enter"
+			@after-enter="afterEnter"
+			@enter-cancelled="enterCancelled"
+			@before-leave="beforeLeave"
+			@leave="leave"
+			@after-leave="afterLeave"
+			@leave-cancelled="leaveCancelled">
+			<h2 v-if="show" class="m-2">HCode Treinamentos</h2>
+		</transition>
+		<button @click="show = !show" class="m-2 btn btn-primary">Mudar</button>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				show: true
+			},
+			methods: {
+				beforeEnter() {
+					console.log("beforeEnter")
+				},
+				enter() {
+					console.log("enter")
+				},
+				afterEnter(element) {
+					console.log("afterEnter", element)
+					let h1 = document.querySelector("h2").style
+					h1.backgroundColor = "#ccc"
+					h1.color = "red"
+				},
+				enterCancelled() {
+					console.log("enterCancelled")
+				},
+				beforeLeave() {
+					console.log("beforeLeave")
+				},
+				leave() {
+					console.log("leave")
+				},
+				afterLeave() {
+					console.log("afterLeave")
+				},
+				leaveCancelled() {
+					console.log("leaveCancelled")
+				}
+			}
+		})
+	</script>
+</body>
+</html>
