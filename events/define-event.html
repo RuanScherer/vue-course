@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Define a Event</title>
+	<link 
+		rel="stylesheet" 
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+		crossorigin="anonymous">
+</head>
+<body>
+	<div id="app">
+		<button @click="increment()" class="btn btn-primary m-2">Clique aqui</button>
+		<span>{{ counter }}</span>
+		<hr>
+		<button @dblclick="alert('Hello')">Duplo clique aqui</button>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				counter: 0
+			},
+			methods: {
+				increment() {
+					this.counter++
+				}
+			}
+		})
+	</script>
+</body>
+</html>
