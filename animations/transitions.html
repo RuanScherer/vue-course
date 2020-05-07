@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Transitions</title>
+	<link 
+		rel="stylesheet" 
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+		crossorigin="anonymous">
+		<style type="text/css">
+			.first-enter-active {
+				transition: opacity 1s ease
+			}
+			.first-leave-active {
+				transition: opacity 1s ease-out
+			}
+			.first-enter, .first-leave-to {
+				opacity: 0
+			}
+
+			.second-enter, .second-leave-to {
+				opacity: 0
+			}
+			.second-enter-active {
+				transition: all 1s linear;
+			}
+			.second-leave-active {
+				transition: all 1s linear;
+			}
+		</style>
+</head>
+<body>
+	<div id="app">
+		<transition name="first">
+			<h2 v-if="show" class="m-2">HCode Treinamentos</h2>
+		</transition>
+		<button @click="show = !show" class="m-2">Mudar</button>
+		<hr>
+		<transition name="second">
+			<div v-if="show2" class="m-2">
+				Este é um texto de exemplo para que se possa aplicar os conceitos de transições com Vue.js
+			</div>
+		</transition>
+		<button @click="show2 = !show2" class="m-2">Mudar</button>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				show: true,
+				show2: false
+			}
+		})
+	</script>
+</body>
+</html>
