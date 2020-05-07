@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Inline styles</title>
+</head>
+<body>
+	<div id="app">
+		<input 
+			type="number" 
+			placeholder="Tamanho da fonte" 
+			v-model="fontSizeProp">
+		<h2 :style="{ fontSize: fontSizeProp + 'px' }">Evan You</h2>
+		<h2 :style="styleRgb">Evan You</h2>
+		<hr>
+		<input 
+			type="number" 
+			placeholder="Vermelho do RGB" 
+			v-model="styleRed">
+			<input 
+			type="number" 
+			placeholder="Verde do RGB" 
+			v-model="styleGreen">
+			<input 
+			type="number" 
+			placeholder="Azul do RGB" 
+			v-model="styleBlue">
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				fontSizeProp: 20,
+				styleRed: 255,
+				styleGreen: 105,
+				styleBlue: 80
+			},
+			computed: {
+				styleRgb() {
+					return { color: `rgb(${this.styleRed}, ${this.styleGreen}, ${this.styleBlue})` }
+				}
+			}
+		})
+	</script>
+</body>
+</html>
