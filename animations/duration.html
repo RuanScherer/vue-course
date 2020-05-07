@@ -30,7 +30,7 @@
 			type="text" 
 			v-model="name" 
 			placeholder="Nome">
-		<transition name="fade">
+		<transition name="fade" :duration="{ enter: 2000, leave: 3000}">
 			<h2 
 				v-if="name.length > 10" 
 				class="m-2"
