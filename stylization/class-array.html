@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Object array</title>
+	<link 
+		rel="stylesheet" 
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+		crossorigin="anonymous">
+	<style type="text/css">
+		[v-cloak] {
+			display: none
+		}
+		.selected {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<div id="app" v-cloak>
+		<table class="table">
+			<tr v-for="(city, index) in cities" :key="index + 1">
+				<td :class="[selectedClass, error ? statusErrorClass : statusClass ]">{{ city }}</td>
+			</tr>
+		</table>
+		<button @click="error = !error" class="btn btn-primary">Mudar estado</button>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				cities: [
+					'Orlando',
+					'Londres',
+					'Sidney'
+				],
+				selectedClass: 'selected',
+				statusClass: 'alert-success',
+				statusErrorClass: 'alert-danger',
+				error: false
+			}
+		})
+	</script>
+</body>
+</html>
