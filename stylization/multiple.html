@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Multiple styles</title>
+</head>
+<body>
+	<div id="app">
+		<div :style="{ display: displayStyle }">Este é um texto de exemplo para que se possa aplicar os conceitos de múltiplos valores de estilo em Vue.js</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				displayStyle: [
+					'-webkit-box',
+					'-moz-flex',
+					'-ms-flexbox'
+				]
+			}
+		})
+	</script>
+</body>
+</html>
