@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Animations</title>
+	<link 
+		rel="stylesheet" 
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+		crossorigin="anonymous">
+		<style type="text/css">
+			.animation-first-enter-active {
+				animation: fade 0.8s;
+			}
+			.animation-first-leave-active {
+				animation: fade 0.8s reverse;
+			}
+			@keyframes fade {
+				from {
+					background-color: #fff 
+				}
+				to {
+					background-color: #999
+				}
+			}
+
+			.animation-second-enter-active {
+				animation: animate 0.5s
+			}
+			.animation-second-leave-active {
+				animation: animate 0.5s reverse
+			}
+			@keyframes animate {
+				0% {
+					background-color: #fff;
+					font-size: 20px;
+				}
+				50% {
+					background-color: red;
+					font-size: 50px;
+				}
+				100% {
+					background-color: #fff;
+					font-size: 20px
+				}
+			}
+		</style>
+</head>
+<body>
+	<div id="app">
+		<transition name="animation-first">
+			<h2 v-if="show" class="m-2">HCode Treinamentos</h2>
+		</transition>
+		<button @click="show = !show" class="m-2">Mudar</button>
+		<transition name="animation-second">
+			<h2 v-if="show2" class="m-2">Vue.js é incrível</h2>
+		</transition>
+		<button @click="show2 = !show2" class="m-2">Mudar</button>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				show: true,
+				show2: true
+			}
+		})
+	</script>
+</body>
+</html>
