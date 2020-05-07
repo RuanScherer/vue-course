@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Array styles</title>
+</head>
+<body>
+	<div id="app">
+		<a 
+			href="https://www.hcode.com.br" 
+			:style="[fontSizeStyle, colorStyle, textDecorationStyle]">
+			Hcode Treinamentos
+		</a>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			data: {
+				fontSizeStyle: {
+					fontSize: '30px'
+				},
+				colorStyle: {
+					color: 'red'
+				},
+				textDecorationStyle: {
+					textDecoration: 'none'
+				}
+			}
+		})
+	</script>
+</body>
+</html>
