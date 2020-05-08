@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Local Component</title>
+	<link 
+		rel="stylesheet" 
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+		crossorigin="anonymous">
+</head>
+<body>
+	<div id="app" class="container py-4">
+		<list></list>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		const listItemComponent = {
+			props: ['name'],
+			template: `<li>{{ name }}</li>`
+		}
+
+		const listComponent = {
+			template: `
+				<ul>
+					<list-item v-for="person in names" :name="person"></list-item>
+				</ul>
+			`,
+			data() {
+				return {
+					names: [
+						'Ruan', 
+						'John', 
+						'Kauê'
+					]
+				}
+			},
+			components: {
+				listItem: listItemComponent
+			}
+		}
+
+		let app = new Vue({
+			el: "#app",
+			components: {
+				list: listComponent
+			}
+		})
+	</script>
+</body>
+</html>
