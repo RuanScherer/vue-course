@@ -63,6 +63,12 @@
 					<hr>
 					<div class="card">
 						<div class="card-body login-card-body">
+							<div 
+								class="alert alert-success" 
+								role="alert"
+								v-if="formSend">
+								Formulário enviado com sucesso!
+							</div>
 							<transition name="fade" mode="out-in">
 								<div 
 									class="login" 
@@ -104,7 +110,7 @@
 											<div class="col-4">
 												<button 
 													type="submit" 
-													@click.prevent="message"
+													@click.prevent="send"
 													class="btn btn-primary btn-block">Login</button>
 											</div>
 										</div>
@@ -178,7 +184,7 @@
 											<div class="col-4">
 												<button 
 													type="submit" 
-													@click.prevent="message"
+													@click.prevent="send"
 													class="btn btn-primary btn-block">Cadastrar</button>
 											</div>
 										</div>
@@ -198,11 +204,15 @@
 				let app = new Vue({
 					el: "#app",
 					data: {
-						action: "login"
+						action: "login",
+						formSend: false
 					},
 					methods: {
 						changeAction(action) {
 							this.action = action
+						},
+						send() {
+							this.formSend = true
 						}
 					}
 				})
