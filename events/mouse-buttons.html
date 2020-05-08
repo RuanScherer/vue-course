@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Mouse buttons Event Modifiers</title>
+	<link 
+		rel="stylesheet" 
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+		crossorigin="anonymous">
+</head>
+<body>
+	<div id="app">
+		<div class="row m-4">
+			<div class="col" @click.left="toggleClass">
+				Click com botão esquerdo
+			</div>
+			<div class="col" @click.prevent.right="toggleClass">
+				Click com botão direito
+			</div>
+			<div class="col" @click.middle="toggleClass">
+				Click com botão do meio (scroll)
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			methods: {
+				toggleClass(event) {
+					let element = event.target
+					const classes = element.classList
+					let method = (classes.contains('bg-info')) ? 'remove' : 'add'
+					eval(`classes.${method}('bg-info')`)
+				}
+			}
+		})
+	</script>
+</body>
+</html>
