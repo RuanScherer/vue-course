@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>System Keys Event Modifiers</title>
+	<link 
+		rel="stylesheet" 
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+		crossorigin="anonymous">
+</head>
+<body>
+	<div id="app">
+		<form class="form p-4" @click.prevent>
+			<div class="form-group">
+				<label for="text">Pressione as teclas abaixo:</label>
+				<input 
+					type="text" 
+					name="text" 
+					id="text" 
+					class="form-control"
+					placeholder="Pressione ctrl"
+					@keydown.ctrl="exec($event)">
+				<input 
+					type="text" 
+					name="text" 
+					id="text" 
+					class="form-control"
+					placeholder="Pressione alt"
+					@keydown.alt="exec($event)">
+				<input 
+					type="text" 
+					name="text" 
+					id="text" 
+					class="form-control"
+					placeholder="Pressione shift"
+					@keydown.shift="exec($event)">
+				<input 
+					type="text" 
+					name="text" 
+					id="text" 
+					class="form-control"
+					placeholder="Pressione windows ou command"
+					@keydown.meta="exec($event)">
+			</div>
+		</form>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+	<script type="text/javascript">
+		let app = new Vue({
+			el: "#app",
+			methods: {
+				exec(event) {
+					console.log(event)
+				}
+			}
+		})
+	</script>
+</body>
+</html>
